@@ -49,7 +49,6 @@ class GetUsers extends Component {
           }}
         >
           {({ loading, error, data }) => {
-            console.log("data", data);
             if (loading) return <h1> loading...</h1>;
             if (data) {
               return <UserTable users={data.users}/>;

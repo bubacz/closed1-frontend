@@ -65,8 +65,8 @@ class ContactCard extends Component {
             {user.title && user.company&& <div className="role">
               {user.title} at {user.company}
             </div>}
-            <hr />
-            {user.status === 'FREE' ? <div>Subscribe to Closed1 for Unlimited Access <button type="input">Subscribe</button></div> : ''}
+            {user.status === 'FREE' ? <div>
+            <hr />Subscribe to Closed1 for Unlimited Access <button type="input">Subscribe</button></div> : ''}
           </div>
         </div>
       </SingleContact>

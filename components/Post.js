@@ -122,7 +122,6 @@ class Post extends Component {
 
   render() {
     const { post, me } = this.props;
-    console.log('post', post.id);
     const { canCreateComment, canReplyComment, commentReplyInfo, commentsList, likeStatus, likesCount } = this.state;
     return (
       <div>

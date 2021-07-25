@@ -113,58 +113,6 @@ const CheckoutForm = ({ productSelected, customer }) => {
     }
   }
 
-  // function retryInvoiceWithNewPaymentMethod({ paymentMethodId, invoiceId }) {
-  //   const priceId = productSelected.name.toUpperCase();
-  //   return (
-  //     fetch('/retry-invoice', {
-  //       method: 'post',
-  //       headers: {
-  //         'Content-type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         customerId: customer.id,
-  //         paymentMethodId: paymentMethodId,
-  //         invoiceId: invoiceId,
-  //       }),
-  //     })
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       // If the card is declined, display an error to the user.
-  //       .then((result) => {
-  //         if (result.error) {
-  //           // The card had an error when trying to attach it to a customer.
-  //           throw result;
-  //         }
-  //         return result;
-  //       })
-  //       // Normalize the result to contain the object returned by Stripe.
-  //       // Add the addional details we need.
-  //       .then((result) => {
-  //         return {
-  //           // Use the Stripe 'object' property on the
-  //           // returned result to understand what object is returned.
-  //           invoice: result,
-  //           paymentMethodId: paymentMethodId,
-  //           priceId: priceId,
-  //           isRetry: true,
-  //         };
-  //       })
-  //       // Some payment methods require a customer to be on session
-  //       // to complete the payment process. Check the status of the
-  //       // payment intent to handle these actions.
-  //       .then(handlePaymentThatRequiresCustomerAction)
-  //       // No more actions required. Provision your service for the user.
-  //       .then(onSubscriptionComplete)
-  //       .catch((error) => {
-  //         console.log(error);
-  //         // An error has happened. Display the failure to the user here.
-  //         setSubscribing(false);
-  //         setErrorToDisplay(error && error.error && error.error.decline_code);
-  //       })
-  //   );
-  // }
-
   const handleSubmit = async (
     createSubscriptionMutation,
     onSubscriptionComplete
@@ -235,6 +183,7 @@ const CheckoutForm = ({ productSelected, customer }) => {
         <div id="payment-form">
           {subscribing ? <LoadingSpinner /> : ''}
             <h3>→ Subscribing to Closed1 Subscription</h3>
+            <p>Upgrade to get full access to your network on Closed1.<br /> $1.99 / month full feeds view and connect with more than the 5 Free Friends.</p>
             <Mutation mutation={SUBSCRIPTION_COMPLETION_MUTATION}>
               {(onSubscriptionComplete) => (
                 <Form

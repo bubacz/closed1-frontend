@@ -37,13 +37,9 @@ class Friends extends Component {
   }
 
   fetchContacts = () => {
-    let { contacts } = this.state;
     const { friendsList } = this.props;
-    if (friendsList) {
-      contacts = friendsList;
-    }
-    this.setState({ contacts });
-    return contacts;
+      this.setState({ contacts: friendsList });
+    return friendsList;
   };
 
   trials = (keypress) => {

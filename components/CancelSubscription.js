@@ -21,15 +21,13 @@ class CancelSubscription extends Component {
     return (
       <Mutation mutation={SUBSCRIPTION_CANCEL_MUTATION} variables={this.props}>
         {(cancelSubscription, loading) => {
+          if(loading) return <LoadingSpinner />
          return <Form
           onSubmit={ async(e) =>{
             e.preventDefault();
             const res = await cancelSubscription();
             console.log('res', res);
-            Router.push(
-              {
-              pathname: '/myProfile'
-            })
+            Router.push({pathname: '/myProfile' });
           }}> <h2>Great!! You are Subscribed Member to Closed One</h2>
             <p> <button>cancel Payment</button>
             </p>

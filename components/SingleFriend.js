@@ -94,15 +94,14 @@ class SingleFriend extends React.Component {
   };
 
   getButtons = () => {
-    const { id, data, me, isRequested } = this.props;
-    console.log("users", me, data);
-    // const [conversation] = user.conversations  ? user.conversations.filter((conversation) => {
-    //   let participants = conversation.participants.map((a) => a.id);
-    //   if (participants.includes(data.id)) {
-    //     return conversation.id;
-    //   }
-    //   return null;
-    // }) : '';
+    const { id, data, user, isRequested } = this.props;
+    const [conversation] = user.conversations.filter((conversation) => {
+      let participants = conversation.participants.map((a) => a.id);
+      if (participants.includes(data.id)) {
+        return conversation.id;
+      }
+      return null;
+    });
     switch (id) {
       case "FindNew":
         return (

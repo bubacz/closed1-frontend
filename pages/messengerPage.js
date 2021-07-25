@@ -1,4 +1,4 @@
-import Messenger from "../Another Setup/pages/messenger";
+import Messenger from "../MessengerComponents/pages/messenger";
 import PleaseSignIn from "../components/PleaseSignIn";
 
 const messengerPage = (props) => (
