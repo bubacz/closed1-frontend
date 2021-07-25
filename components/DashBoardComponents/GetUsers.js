@@ -31,7 +31,7 @@ const PAGINATION_QUERY = gql`
   }
 `;
 
-class AllUsers extends Component {
+class GetUsers extends Component {
   render() {
     return (
       <>
@@ -61,4 +61,4 @@ class AllUsers extends Component {
   }
 }
 
-export default AllUsers;
+export default GetUsers;

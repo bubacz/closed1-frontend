@@ -1,4 +1,4 @@
-import AllUsers from "../components/DashBoard Components/AllUsers";
+import AllUsers from "../components/DashBoardComponents/GetUsers";
 // import PleaseSignIn from "../components/PleaseSignIn";
 
 const totalUsers = (props) => (
