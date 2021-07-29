@@ -37,9 +37,13 @@ class Friends extends Component {
   }
 
   fetchContacts = () => {
+    let { contacts } = this.state;
     const { friendsList } = this.props;
-      this.setState({ contacts: friendsList });
-    return friendsList;
+    if (friendsList) {
+      contacts = friendsList;
+    }
+    this.setState({ contacts });
+    return contacts;
   };
 
   trials = (keypress) => {
@@ -89,7 +93,7 @@ class Friends extends Component {
             <SingleFriend
               key={contact.id}
               data={contact}
-              user={this.props.user}
+              me={this.props.user}
               id="FriendsList"
             />
           ))}

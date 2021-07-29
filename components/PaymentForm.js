@@ -182,9 +182,9 @@ const CheckoutForm = ({ productSelected, customer }) => {
       {(createSubscriptionMutation, { loading, error }) => (
         <div id="payment-form">
           {subscribing ? <LoadingSpinner /> : ''}
-            <h3>→ Subscribing to Closed1 Subscription</h3>
+             <h3>→ Subscribing to Closed1 Subscription</h3>
             <p>Upgrade to get full access to your network on Closed1.<br /> $1.99 / month full feeds view and connect with more than the 5 Free Friends.</p>
-            <Mutation mutation={SUBSCRIPTION_COMPLETION_MUTATION}>
+             <Mutation mutation={SUBSCRIPTION_COMPLETION_MUTATION}>
               {(onSubscriptionComplete) => (
                 <Form
                   id="payment-form"

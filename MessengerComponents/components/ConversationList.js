@@ -1,5 +1,5 @@
 import moment from "moment";
-import ConversationListItem from "../components/ConversationListItem";
+import ConversationListItem from "./ConversationListItem";
 import styled from "styled-components";
 import Router from "next/router";
 

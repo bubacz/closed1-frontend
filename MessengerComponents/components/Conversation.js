@@ -6,7 +6,7 @@ import {
   ConversationRightTile,
   ConversationBody,
   ConversationFooter,
-} from "../components/MessengerStyles";
+} from "./MessengerStyles";
 import Loader from "react-loader-spinner";
 import User from "../../Assets/user.png";
 
@@ -101,6 +101,7 @@ export default class Conversation extends React.Component {
           <input
             disabled={loading}
             type="text"
+            autoFocus
             className="compose-input form-control"
             placeholder="Type a message"
             value={this.state.text}

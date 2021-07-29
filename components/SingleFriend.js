@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import User from "../Assets/user.png";
 import Router from "next/router";
-import MessageButton from "./MessageButton";
 import SendConnection from "./Connections/SendConnection";
 import Closed1Button from "./styles/Closed1Button";
 import CancelRequest from "./Connections/CancelRequest";
@@ -94,14 +93,14 @@ class SingleFriend extends React.Component {
   };
 
   getButtons = () => {
-    const { id, data, user, isRequested } = this.props;
-    const [conversation] = user.conversations.filter((conversation) => {
+    const { id, data, me, isRequested } = this.props;
+    const [conversation] = me.conversations  ? me.conversations.filter((conversation) => {
       let participants = conversation.participants.map((a) => a.id);
       if (participants.includes(data.id)) {
         return conversation.id;
       }
       return null;
-    });
+    }) : '';
     switch (id) {
       case "FindNew":
         return (
@@ -119,9 +118,10 @@ class SingleFriend extends React.Component {
       case "FriendsList":
         return (
           <div>
-            <MessageButton user={user} me={data.id} />
+          <button className="messaging" onClick={() => routeToMessaging(conversation.id)}>
+            Message
+          </button>
             <RemoveFriend userId={data.id} conversationId={conversation.id} />
-            {/* <FontAwesomeIcon icon={faBars} size="2x" /> */}
           </div>
         );
       default:

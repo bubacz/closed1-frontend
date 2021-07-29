@@ -1,4 +1,4 @@
-import { Search } from "../components/MessengerStyles";
+import { Search } from "./MessengerStyles";
 export default class SearchInput extends React.Component {
   constructor(props) {
     super(props);
