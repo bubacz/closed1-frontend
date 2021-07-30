@@ -4,6 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import LoadingSpinner from "../components/LoadingSpinner";
 import AnimatedNumber from "animated-number-react";
+import PleaseSignIn from "../components/PleaseSignIn";
 import {
   ResponsiveContainer,
   PieChart,
@@ -56,6 +57,7 @@ class Admin extends Component {
   render() {
     const stats = getUtcDates();
     return (
+      <PleaseSignIn page="admin">
       <Query
         query={GET_POSTS_DATA}
         fetchPolicy="cache-and-network"
@@ -201,7 +203,7 @@ class Admin extends Component {
           );
         }}
       </Query>
-    );
+      </PleaseSignIn>);
   }
 }
 

@@ -2,12 +2,11 @@ import { Query } from "react-apollo";
 import { CURRENT_USER_QUERY } from "../Queries/Me";
 import Signin from "./Signin";
 import RequestReset from "../components/RequestReset";
-// import SocialLogin from './SocialLogin';
-// import { GoogleLogin } from 'react-google-login';
 import styled from "styled-components";
 import Link from "next/link";
 import Closed1Button from "./styles/Closed1Button";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Router from "next/router";
 
 const MainForm = styled.div`
   // display: block;
@@ -42,9 +41,13 @@ const PleaseSignIn = (props) => (
             <div>
               <RequestReset />
             </div>
-            {/* <SocialLogin /> */}
           </MainForm>
         );
+      }
+      if(data.me.permissions !=="ADMIN" && props.page ==="admin"){
+        Router.push({
+          pathname: "/",
+        })
       }
       if (data.me) {
         if (data.me.active) {
@@ -52,7 +55,6 @@ const PleaseSignIn = (props) => (
         }
         return (
           <h2>
-            {" "}
             we've sent you an email with instructions to activate your account
           </h2>
         );
