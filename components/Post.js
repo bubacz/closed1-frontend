@@ -17,6 +17,7 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import CreateComment from "./CreateComment";
 import Comments from "./Comments";
 import ReplyComment from "./ReplyComment";
+import ReportPost from "./Connections/ReportPost";
 
 const LIKE_POST_MUTATION = gql`
   mutation LIKE_POST_MUTATION($id: ID!) {
@@ -122,6 +123,9 @@ class Post extends Component {
 
   render() {
     const { post, me } = this.props;
+    let reportedBy= post.reportedBy.map(a => a.reportedBy);
+     reportedBy= reportedBy.map(b => b.id);
+    // console.log(reportedBy);
     const { canCreateComment, canReplyComment, commentReplyInfo, commentsList, likeStatus, likesCount } = this.state;
     return (
       <div>
@@ -188,7 +192,9 @@ class Post extends Component {
                       <FontAwesomeIcon icon={faComment} />
                       &nbsp;&nbsp;Comment
                     </a>
+                    {!reportedBy.includes(me.id) && <ReportPost id={post.id}/>}
                   </>
+                 
                 )}
               </div>
           </div>

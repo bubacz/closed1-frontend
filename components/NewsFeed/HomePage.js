@@ -20,6 +20,11 @@ export const ALL_POSTS_QUERY = gql`
           id
         }
       }
+      reportedBy{
+        reportedBy{
+          id
+        }
+      }
       createdAt
       updatedAt
       author {

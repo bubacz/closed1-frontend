@@ -200,5 +200,17 @@ export const GET_POSTS_DATA = gql`
         count
       }
     }
+
+    totalReportedUsers: reportedUsersesConnection {
+      aggregate {
+        count
+      }
+    }
+
+    totalReportedPosts: reportedPostsesConnection {
+      aggregate {
+        count
+      }
+    }
   }
 `;

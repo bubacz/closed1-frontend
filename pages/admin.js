@@ -112,13 +112,17 @@ class Admin extends Component {
                     formatValue={this.formatValue}
                   />
                 </div>
+                <Link href={{
+                    pathname: "/reportedPosts",
+                    query: { page: 1 },
+                  }}>
                 <div className="item posts">
                   Total Reported Posts
                   <AnimatedNumber
-                    value={data.totalPosts.aggregate.count}
+                    value={data.totalReportedPosts.aggregate.count}
                     formatValue={this.formatValue}
                   />
-                </div>
+                </div></Link>
                 <Link href={{
                     pathname: "/totalUsers",
                     query: { page: 1 },
@@ -129,13 +133,17 @@ class Admin extends Component {
                     formatValue={this.formatValue}
                   />
                 </div></Link>
-                <div className="item users">
+                
+                <Link href={{
+                    pathname: "/reportedUsers",
+                    query: { page: 1 },
+                  }}><div className="item users">
                   Total Reported Users
                   <AnimatedNumber
-                    value={data.totalUsers.aggregate.count}
+                    value={data.totalReportedUsers.aggregate.count}
                     formatValue={this.formatValue}
                   />
-                </div>
+                </div></Link>
               </div>
               <div>
                 {/* <ResponsiveContainer width="100%" height="100%"> */}
@@ -203,7 +211,7 @@ class Admin extends Component {
           );
         }}
       </Query>
-      </PleaseSignIn>);
+   </PleaseSignIn>);
   }
 }
 
