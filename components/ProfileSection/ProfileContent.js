@@ -6,7 +6,6 @@ import RemoveFriend from "../Connections/RemoveFriend";
 import CancelRequest from "../Connections/CancelRequest";
 import AcceptConnection from "../Connections/AcceptConnection";
 import DeclineConnection from "../Connections/DeclineConnection";
-import MessageButton from "../MessageButton";
 import Router from "next/router";
 
 const Content = styled.div`
@@ -91,7 +90,9 @@ class ProfileContent extends Component {
       case "2":
         return (
           <div>
-            <MessageButton user={user} me={me.id} />
+          <button className="messaging" onClick={() => routeToMessaging(conversation.id)}>
+            Message
+          </button>
             <RemoveFriend userId={user.id} conversationId={conversation.id} />
           </div>
         );
