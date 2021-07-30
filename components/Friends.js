@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import styled from "styled-components";
 import SingleFriend from "./SingleFriend";
 // import { conversations } from "./messengerSetup/Messenger";
-import ConversationSearch from "./messengerSetup/ConversationSearch";
+import ConversationSearch from "./ConversationSearch";
 import Form from "./styles/Form";
 import { AnimatePresence, motion } from "framer-motion";
 // import TemplateImage from "../Assets/backHero.jpg"
