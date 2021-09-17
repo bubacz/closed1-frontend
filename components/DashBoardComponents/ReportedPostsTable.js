@@ -38,7 +38,6 @@ const Table = styled.table`
 class ReportedPostsTable extends Component {
   render() {
     const { users } = this.props;
-    console.log(users);
     return (
       <Table>
         <thead className="table-head">

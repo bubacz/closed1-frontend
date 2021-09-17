@@ -63,7 +63,6 @@ class CheckoutForm extends React.Component {
             } else {
               this.setState({ info: result.token.id });
               // Send the token to your server.
-              console.log("state", this.state);
               const res = await acceptPayment();
               console.log("res", res);
               this.setState({isOpen: true});

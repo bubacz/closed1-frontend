@@ -75,7 +75,6 @@ class Reset extends Component {
                     response: true,
                   });
                 }
-                console.log("response", res);
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>

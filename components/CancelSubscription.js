@@ -25,7 +25,6 @@ class CancelSubscription extends Component {
           onSubmit={ async(e) =>{
             e.preventDefault();
             const res = await cancelSubscription();
-            console.log('res', res);
             Router.push(
               {
               pathname: '/myProfile'

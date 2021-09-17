@@ -3,72 +3,83 @@ import styled from "styled-components";
 import Router from 'next/router';
 import AcceptConnection from './AcceptConnection';
 import DeclineConnection from './DeclineConnection';
+import User from "../../Assets/user.png";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export const RequestList = styled.div`
-  display: flex;
-  max-width: 800px;
-  height: 100px;
-  align-items: center;
-  padding: 10px;
-  border: 2px solid ${(props) => props.theme.lightgrey};
-  box-shadow: 5px 5px 10px 1px grey,
-  2px 2px 15px 2px grey inset;
-  border-radius: 5px;
-  background: white;
-  text-align: justify;
+display: flex;
+max-width: 800px;
+height: 100px;
+align-items: center;
+padding: 10px;
+border: 2px solid ${(props) => props.theme.lightgrey};
+border-radius: 10px;
+background: white;
 
-  .conversation-list-item:hover {
-    background: solid blue;
+.conversation-list-item:hover {
+  background: solid blue;
+  cursor: pointer;
+}
+
+.conversation-photo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.conversation-title {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 0;
+  :hover {
     cursor: pointer;
+    color: ${(props) => props.theme.green};
   }
+}
 
-  .conversation-photo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-    background: grey;
-  }
+.conversation-snippet {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+  text-overflow: initial;
+  white-space: nowrap;
+}
 
-  .conversation-title {
+.connected-info {
+  font-size: 10px;
+}
+
+.action-items {
+  color: ${(props) => props.theme.green};
+  position: absolute;
+  right: 0;
+  padding-right: 10%;
+
+  .messaging {
+    background: none;
+    border: 1px solid ${(props) => props.theme.green};
     font-size: 14px;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin: 0;
-  }
-
-  .conversation-snippet {
-    font-size: 12px;
-    color: #888;
-    margin: 0;
-    text-overflow: initial;
-    white-space: nowrap;
-    max-width: 10rem;
-  }
-
-  .action-items {    
-    display: flex;
-    position: absolute;
-    right: 10%;
-
-    .action-button{
-      color: ${(props) => props.theme.green};
-      background: none;
-      border: 1px solid ${(props) => props.theme.green};
-      font-size: 14px;
-      height: 35px;
-      width: 60;
-      // vertical-align: top;
-      // margin-right: 10px;
-      :hover {
-        background: ${(props) => props.theme.lightgreen};
-        cursor: pointer;
-      }
+    height: 30px;
+    width: 100px;
+    vertical-align: top;
+    margin-right: 10px;
+    :hover {
+      background: ${(props) => props.theme.lightgreen};
+      cursor: pointer;
     }
   }
+  .sequence-button {
+    display: inline-flex;
+    button{
+      font-size: 14px;
+    }
+    width: 25%;
+  }
+}
 `;
 
 
@@ -78,10 +89,10 @@ class SingleRequest extends React.Component {
 
     return (
       <RequestList>
-        <img className="conversation-photo" src={request.profilePic} />
+        <img className="conversation-photo" src={request.profilePic ? request.profilePic : User} />
         <div className="conversation-info">
           <h1 className="conversation-title">{request.name}</h1>
-          <p className="conversation-snippet">{request.title} at {request.company}</p>
+          <p className="conversation-snippet">{request.title} {request.company && `at ${request.company}`}</p>
           {/* <p className="conversation-snippet">{text}</p> */}
         </div>
         <div className="action-items ">

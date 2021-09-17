@@ -13,6 +13,7 @@ const SIGNIN_MUTATION = gql`
       id
       email
       name
+      permissions
     }
   }
 `;
@@ -44,7 +45,12 @@ class Signin extends Component {
                 e.preventDefault();
                 const res = await login();
                 this.setState({ name: "", email: "", password: "" });
-                window.location.reload();
+                if(res.data.signin.permissions ==="ADMIN" ) {
+                  Router.push({
+                    pathname: "/admin",
+                  })
+                }
+                // window.location.reload();
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>

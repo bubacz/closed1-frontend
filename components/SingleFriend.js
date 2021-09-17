@@ -84,6 +84,15 @@ export const ConversationList = styled.div`
   }
 `;
 
+function routeToMessaging(id) {
+  Router.push({
+    pathname: "/messengerPage",
+    query: {
+      id: id,
+    },
+  });
+}
+
 class SingleFriend extends React.Component {
   handleClick = (id) => {
     Router.push({

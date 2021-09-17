@@ -64,7 +64,6 @@ class ReportUser extends Component {
     const response = confirm(`Are you Sure want to report ${name}?`);
     if (response) {
       const res = await confirmReport();
-      console.log(res);
     }
   };
 

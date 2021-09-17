@@ -168,7 +168,6 @@ const CheckoutForm = ({ productSelected, customer }) => {
       });
     if (response.subscription.payment_intent.status === "succeeded") {
       const subscribed = await onSubscriptionComplete();
-      console.log("response whole", subscribed);
     }
     setSubscribing(false);
     window.location.reload();

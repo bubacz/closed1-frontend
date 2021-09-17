@@ -26,7 +26,7 @@ class Posts extends Component {
               </div>
             ))
           ) : (
-            <h2>There are no posts for this user</h2>
+            <h2>There are no posts for {user.name}</h2>
           )}
         </PostsList>
       </Center>

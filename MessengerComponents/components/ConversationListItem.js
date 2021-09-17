@@ -54,7 +54,6 @@ export const ConversationListItemstyle = styled.div`
 class ConversationListItem extends React.Component {
   render() {
     const { user, lastMessage, lastAuthor, when } = this.props;
-    console.log('check log user', user);
 
     return (
       <ConversationListItemstyle

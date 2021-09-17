@@ -41,7 +41,6 @@ class CreateComment extends Component {
             onSubmit={async e => {
               e.preventDefault();
               const res = await createComment();
-              console.log("response", res);
               this.props.onCommentPost(this.state.content, res.data.createComment.id);
               this.setState({content: ''})
               // change them to the single item page

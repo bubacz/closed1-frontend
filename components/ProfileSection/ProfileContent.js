@@ -138,7 +138,7 @@ class ProfileContent extends Component {
           <div>
           {user.territory ? <div> <strong>Territory</strong>: {user.territory}</div> : ''}
           {user.targetBuyers ? <div> <strong>Target Buyers</strong>: {user.targetBuyers}</div> : ''}
-            {boolMine ? <div> <strong>Phone</strong>: &nbsp;{user.phone} </div> : ""}
+            {boolMine && user.phone ? <div> <strong>Phone</strong>: &nbsp;{user.phone} </div> : ""}
           </div>
         </div>
         <div className="grid-col-3 grid-md-col-1">

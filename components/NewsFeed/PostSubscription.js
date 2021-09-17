@@ -25,6 +25,11 @@ export default gql`
           id
         }
       }
+      reportedBy{
+        reportedBy{
+          id
+        }
+      }
         author {
           id
           name

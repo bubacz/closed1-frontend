@@ -52,8 +52,7 @@ const PleaseSignIn = (props) => (
       if (data.me) {
         if (data.me.active) {
           return props.children;
-        }
-        return (
+        } else return (
           <h2>
             we've sent you an email with instructions to activate your account
           </h2>

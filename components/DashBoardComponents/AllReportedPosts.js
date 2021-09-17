@@ -53,11 +53,8 @@ class AllReportedPosts extends Component {
           }}
         >
           {({ loading, error, data }) => {
-            console.log("data", data);
             if (loading) return <h1> loading...</h1>;
             if (data) {
-              console.log(data);
-              // return <h4>Table here</h4>;
               return <ReportedPostsTable users={data.reportedPosts}/>;
             }
           }}
