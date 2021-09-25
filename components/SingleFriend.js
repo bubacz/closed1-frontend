@@ -84,7 +84,7 @@ export const ConversationList = styled.div`
   }
 `;
 
-function routeToMessaging(id) {
+export function routeToMessaging(id) {
   Router.push({
     pathname: "/messengerPage",
     query: {

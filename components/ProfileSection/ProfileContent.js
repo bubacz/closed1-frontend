@@ -7,6 +7,7 @@ import CancelRequest from "../Connections/CancelRequest";
 import AcceptConnection from "../Connections/AcceptConnection";
 import DeclineConnection from "../Connections/DeclineConnection";
 import Router from "next/router";
+import { routeToMessaging } from "../SingleFriend";
 
 const Content = styled.div`
   display: grid;
