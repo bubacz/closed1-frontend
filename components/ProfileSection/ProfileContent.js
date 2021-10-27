@@ -91,10 +91,10 @@ class ProfileContent extends Component {
       case "2":
         return (
           <div>
-          <button className="messaging" onClick={() => routeToMessaging(conversation.id)}>
+          <button className="messaging" onClick={() => routeToMessaging(conversation?.id)}>
             Message
           </button>
-            <RemoveFriend userId={user.id} conversationId={conversation.id} />
+            <RemoveFriend userId={user.id} conversationId={conversation?.id} />
           </div>
         );
       case "3":

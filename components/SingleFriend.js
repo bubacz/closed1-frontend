@@ -127,10 +127,10 @@ class SingleFriend extends React.Component {
       case "FriendsList":
         return (
           <div>
-          <button className="messaging" onClick={() => routeToMessaging(conversation.id)}>
+          <button className="messaging" onClick={() => routeToMessaging(conversation?.id)}>
             Message
           </button>
-            <RemoveFriend userId={data.id} conversationId={conversation.id} />
+            <RemoveFriend userId={data.id} conversationId={conversation?.id} />
           </div>
         );
       default:
