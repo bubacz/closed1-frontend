@@ -52,10 +52,11 @@ class ReportedPostsTable extends Component {
         </thead>
         <tbody>
           {users.map((user, index) => {
+            console.log('users', users);
             return (
               <tr key={index}>
                 <td>
-                    {user.post.content}
+                    {user.post?.content}
                 </td>
                 <td>{user.post.company}</td>
                 <td>

@@ -52,10 +52,11 @@ class AllReportedPosts extends Component {
             skip: this.props.page * perPage - perPage,
           }}
         >
-          {({ loading, error, data }) => {
+          {({ loading, data }) => {
             if (loading) return <h1> loading...</h1>;
             if (data) {
-              return <ReportedPostsTable users={data.reportedPosts}/>;
+              const reportedPosts = data.reportedPosts.filter(record => record.post);
+              return <ReportedPostsTable users={reportedPosts}/>;
             }
           }}
         </Query>

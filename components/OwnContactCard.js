@@ -49,7 +49,6 @@ const SingleContact = styled.div`
     padding: 2rem;
   }
 `;
-
 class ContactCard extends Component {
   render() {
     const { user }= this.props;
@@ -66,7 +65,7 @@ class ContactCard extends Component {
               {user.title} at {user.company}
             </div>}
             <hr />
-            {user.status === 'FREE' ? <div>Subscribe to Closed1 for Unlimited Access <button type="input">Subscribe</button></div> : ''}
+            {user.status === 'FREE' ? <div>Subscribe to Closed1 for Unlimited Access <button type="button" onClick={()=>Router.push({pathname: '/upgradeAccount'})}>Subscribe</button></div> : ''}
           </div>
         </div>
       </SingleContact>
