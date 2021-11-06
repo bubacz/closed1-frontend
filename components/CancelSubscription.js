@@ -29,7 +29,7 @@ class CancelSubscription extends Component {
               {
               pathname: '/myProfile'
             })
-          }}> <h2>Great!! You are Subscribed Member to Closed One</h2>
+          }}> <h2>Great!! You are Subscribed Member to Closed1</h2>
             <p> <button>cancel Payment</button>
             </p>
           </Form>

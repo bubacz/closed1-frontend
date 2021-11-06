@@ -182,7 +182,8 @@ const CheckoutForm = ({ productSelected, customer }) => {
         <div id="payment-form">
           {subscribing ? <LoadingSpinner /> : ''}
              <h3>→ Subscribing to Closed1 Subscription</h3>
-            <p>Upgrade to get full access to your network on Closed1.<br /> $1.99 / month full feeds view and connect with more than the 5 Free Friends.</p>
+          <p>Upgrade your subscription from free to paid ($2.99 per month) to unlock the full potential of your Closed1 Network.</p>
+          <p>Unlock full access to the Rolodex, Feed, and Friends Profile Pages.</p>
              <Mutation mutation={SUBSCRIPTION_COMPLETION_MUTATION}>
               {(onSubscriptionComplete) => (
                 <Form
