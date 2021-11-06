@@ -179,11 +179,17 @@ const CheckoutForm = ({ productSelected, customer }) => {
       variables={{ paymentMethodId: paymentId }}
     >
       {(createSubscriptionMutation, { loading, error }) => (
-        <div id="payment-form">
+        <div id="payment-form" style={{ fontSize: "1.6rem"}}>
           {subscribing ? <LoadingSpinner /> : ''}
              <h3>→ Subscribing to Closed1 Subscription</h3>
           <p>Upgrade your subscription from free to paid ($2.99 per month) to unlock the full potential of your Closed1 Network.</p>
-          <p>Unlock full access to the Rolodex, Feed, and Friends Profile Pages.</p>
+            Unlock full access to:
+          <ul style={{ marginTop: 0, marginBottom: "3rem"}}>
+              <li>Rolodex</li>
+              <li>Feed</li>
+              <li>Friends Profile Pages.</li>
+            </ul>
+            
              <Mutation mutation={SUBSCRIPTION_COMPLETION_MUTATION}>
               {(onSubscriptionComplete) => (
                 <Form
