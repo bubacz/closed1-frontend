@@ -3,7 +3,8 @@ import Comment from "./Comment";
 import styled from 'styled-components';
 
 const CommentsList = styled.div`
-display: grid;
+  display: grid;
+  padding: 1rem 0;
 `;
 
 class Comments extends Component {
