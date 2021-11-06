@@ -91,58 +91,55 @@ export const ConversationBody = styled.div`
 
 export const ConversationFooter = styled.div`
   .compose {
-    padding: 10px;
     display: flex;
-    align-items: baseline;
-    // background: white;
-    border-top: 1px solid #eeeef1;
     position: fixed;
-    width: calc(100% - 20px);
     bottom: 0px;
-  }
+    left: 0px;
+    justify-content: flex-end;
+    align-items: stretch;
+    width: calc(100% - 20px);
+    padding: 1.5rem 1rem;
+    border-top: 1px solid #eeeef1;
+    gap: 1.5rem;
+    // background: white;
 
-  @supports (backdrop-filter: blur(20px)) {
-    .compose {
+    @supports (backdrop-filter: blur(20px)) {
       border: none;
       // background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(20px);
+    }
+
+    >* {
+      margin: 0;
+    }
+
+    .toolbar-button,
+    .disabled-button {
+      padding: 0 3rem;
+      border: solid ${(props) => props.theme.green};
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .toolbar-button {
+      color: white;
+      cursor: pointer;
+      background: ${(props) => props.theme.green};
+    }
+
+    .disabled-button{
+      color: ${(props) => props.theme.green};
+      background: #f5f5f5;
     }
   }
 
   .compose-input {
     border: 1px solid ${(props) => props.theme.green};
     width: 75%;
-  }
 
-  .compose-input::placeholder {
-    opacity: 0.3;
-  }
-
-  .compose .toolbar-button {
-    color: white;
-    font-size: 18px;
-    border: solid ${(props) => props.theme.green};
-    background: ${(props) => props.theme.green};
-    width: 60px;
-    height: 40px;
-    text-align: center;
-    margin: 5px;
-  }
-  .compose .disabled-button{
-    color: ${(props) => props.theme.green};
-    background: #f5f5f5;
-    font-size: 18px;
-    border: solid ${(props) => props.theme.lightGreen};
-    width: 60px;
-    height: 40px;
-    text-align: center;
-    margin: 5px;
-  }
-
-  .compose .toolbar-button:hover {
-    cursor: pointer;
-    color: ${(props) => props.theme.green};
-    // background: #fff;
+    &::placeholder {
+      opacity: 0.3;
+    }
   }
 `;
 
