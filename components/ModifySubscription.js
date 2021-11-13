@@ -7,8 +7,10 @@ import { Query } from "react-apollo";
 import styled from 'styled-components';
 
 const SubscriptionPage = styled.div`
-  width: 60%;
-  padding-left: 25%;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  
   button {
     float: none;
   }

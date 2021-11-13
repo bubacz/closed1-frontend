@@ -16,6 +16,17 @@ const Content = styled.div`
   button {
     height: 4rem ;
   }
+
+  .friend-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    >button {
+      flex-grow: 1;
+    }
+  }
   
   .buttons-sequence {
     display: grid;
@@ -90,10 +101,10 @@ class ProfileContent extends Component {
         );
       case "2":
         return (
-          <div>
-          <button className="messaging" onClick={() => routeToMessaging(conversation?.id)}>
-            Message
-          </button>
+          <div className="friend-actions">
+            <button className="messaging" onClick={() => routeToMessaging(conversation?.id)}>
+              Message
+            </button>
             <RemoveFriend userId={user.id} conversationId={conversation?.id} />
           </div>
         );

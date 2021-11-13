@@ -298,6 +298,12 @@ injectGlobal`
     border-radius: 1rem;
   }
   
+  .card-header,
+  .card-body,
+  .card-footer {
+    background-clip: content-box;
+  }
+  
   .card-body {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -311,14 +317,10 @@ injectGlobal`
   
   .card-header {
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   }
   
   .card-footer {
     padding: 0.75rem 1.25rem;
-    background-color: rgba(0, 0, 0, 0.03);
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
   }
 
   

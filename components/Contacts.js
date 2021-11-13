@@ -40,10 +40,30 @@ const Center = styled.div`
 
   .header {
     display: flex;
-    align-items: center;
-  }
-  .header button {
-    flex-grow: 1;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+
+      >* {
+        min-height: 40px;
+      }
+    }
+    
+    >* {
+      margin: 0;
+      flex-shrink: 1;
+    }
+
+    input[type=search] {
+      flex: 1 0 300px;
+    }
+
+    button {
+      flex: 1 0 200px;
+    }
   }
 `;
 
