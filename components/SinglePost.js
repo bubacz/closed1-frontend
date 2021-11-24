@@ -3,15 +3,19 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import Error from "./ErrorMessage";
 import styled from "styled-components";
+import Link from "next/link";
 import Head from "next/head";
 import Comments from "./Comments";
 import CreateComment from "./CreateComment";
+import PostStyles from "./styles/PostStyles";
+import PostUserInfo from "./PostUserInfo";
 import { canComment, canViewPost } from "../lib/genUtils";
 import Format from "./Format";
 import Closed1Button from "./styles/Closed1Button";
 import { CURRENT_USER_QUERY } from "../Queries/Me";
 import ProfileHeader from "./ProfileSection/ProfileHeader";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Post from "./Post";
 
 const SinglePostStyles = styled.div`
   margin: 2rem auto;
@@ -50,7 +54,7 @@ const Button = styled.button`
 `;
 
 const SINGLE_POST_QUERY = gql`
-  query SINGLE_POST_QUERY($id: ID!) {
+  query SINGLE_POST_QUERY($id: String!) {
     post(id: $id) {
       id
       content
@@ -86,6 +90,7 @@ class SinglePost extends Component {
   formatDate = (dateString) => {
     return dateString.replace(/(\d{4})-(\d{2})-(\d{2}).+/gi, "$2/$3/$1");
   };
+
   render() {
     return (
       <Main>
@@ -109,49 +114,12 @@ class SinglePost extends Component {
                   if (!data.post)
                     return <p>No Post Found for {this.props.id}</p>;
                   const { post } = data;
-                  return (
-                    <>
-                      {canViewPost(me, post.author) && (
-                        <>
-                          <SinglePostStyles>
-                            <Head>
-                              <title>Closed1 | {post.id}</title>
-                            </Head>
-                            <div className="details">
-                              <h2>{post.author.name}</h2>
-                              <p>Deal closed at {post.company}</p>
-                              <p>{post.content}</p>
-                              <p>
-                                <Format formatter={this.formatDate}>
-                                  {post.createdAt}
-                                </Format>
-                              </p>
-                            </div>
-                          </SinglePostStyles>
-                          {canComment(me, post.author) && (
-                            <CreateComment postId={this.props.id} />
-                          )}
-                          <Comments commentList={post.comments} />
-                        </>
-                      )}
-                      {!canViewPost(me, post.author) && (
-                        <>
-                          <SinglePostStyles>
-                            <Head>
-                              <title>Closed1 | Add {post.author.name}</title>
-                            </Head>
-                            <div className="details">
-                              {/* <Center> */}
-                              <ProfileHeader user={post} />
-                              {/* <p>You are not connected to {post.author.name}!</p>
-                          <Closed1Button>Connect with {post.author.name}</Closed1Button> */}
-                              {/* </Center> */}
-                            </div>
-                          </SinglePostStyles>
-                        </>
-                      )}
-                    </>
-                  );
+                  return <> {canViewPost(me, post.author) ? <Post me={me} post={post} /> :
+                    <h3>You are not friends with <Link
+                      href={me.id === post.author.id ? "/myProfile" : `/userProfile?id=${post.author.id}`}
+                    >
+                      {post.author.name}
+                    </Link> to view this post</h3>}</>
                 }}
               </Query>
             );

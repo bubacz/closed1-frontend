@@ -8,7 +8,13 @@ import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_POSTS_QUERY = gql`
   query SEARCH_POSTS_QUERY($searchTerm: String!) {
-    posts(where: { OR: [{ content_contains: $searchTerm }, { content_contains: $searchTerm }] }) {
+    allPosts(
+      where: {
+        OR: [{ company_contains: $searchTerm }, { content_contains: $searchTerm }]
+      }
+    ) {
+      id
+      company
       content
       author {
         name
@@ -18,6 +24,7 @@ const SEARCH_POSTS_QUERY = gql`
 `;
 
 function routeToPost(post) {
+  console.log('post', post);
   Router.push({
     pathname: '/post',
     query: {
@@ -41,11 +48,12 @@ class AutoComplete extends React.Component {
       query: SEARCH_POSTS_QUERY,
       variables: { searchTerm: e.target.value },
     });
+    console.log('res', res);
     this.setState({
-      items: res.data.posts,
+      items: res.data.allPosts,
       loading: false,
     });
-  }, 100);
+  }, 500);
 
   render() {
     resetIdCounter();
@@ -59,7 +67,7 @@ class AutoComplete extends React.Component {
                   <input
                     {...getInputProps({
                       type: 'search',
-                      placeholder: 'Search For An Item',
+                      placeholder: 'Search For A Post',
                       id: 'search',
                       className: this.state.loading ? 'loading' : '',
                       onChange: e => {
@@ -72,8 +80,8 @@ class AutoComplete extends React.Component {
               </ApolloConsumer>
               {isOpen && (
                 <DropDown>
-                  {this.state.items.map((item, index) => 
-                    (
+                  {this.state.items.map((item, index) =>
+                  (
                     <DropDownItem
                       {...getItemProps({ item })}
                       key={index}

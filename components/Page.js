@@ -103,6 +103,10 @@ injectGlobal`
       cursor: pointer;
     }
   }
+  a:hover{
+    color: ${theme.green};
+    text-decoration: underline;
+  }
 
   .btn-primary {
     background-color: ${theme.green};

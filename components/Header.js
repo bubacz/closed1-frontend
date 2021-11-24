@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import Nav from './Nav';
-// import Img from 'react-image'
 import Close from '../Assets/closed_logo.png';
-import Search from './Search';
+import AutoComplete from './Search';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -69,7 +68,7 @@ const Header = () => (
       <Nav />
     </div>
     <div className="sub-bar">
-      {/* <Search /> */}
+      <AutoComplete />
     </div>
   </StyledHeader>
 );
