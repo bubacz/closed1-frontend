@@ -59,7 +59,7 @@ const StyledHeader = styled.header`
 `;
 
 
-const Header = () => (
+const Header = (props) => (
   <StyledHeader>
     <div className="bar navbar">
       <Link href="/posts">
@@ -67,9 +67,10 @@ const Header = () => (
       </Link>
       <Nav />
     </div>
+    {props.pageName ==="/" || props.pageName === "/posts" ?
     <div className="sub-bar">
       <AutoComplete />
-    </div>
+    </div> : ""}
   </StyledHeader>
 );
 

@@ -17,6 +17,7 @@ const SEARCH_POSTS_QUERY = gql`
       company
       content
       author {
+        id
         name
       }
     }
