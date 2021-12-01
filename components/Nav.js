@@ -1,18 +1,13 @@
 import Link from "next/link";
 import NavStyles from "./styles/NavStyles";
-import User from "./User";
 import SignOut from "./Signout"; 
 import ProfileNav from "./ProfileNav";
 
-const Nav = () => (
-  <User>
-    {({ data }) => {
-      const me = data ? data.me : null;
-      return (
+const Nav = (props) => (
         <NavStyles data-test="nav">
-          {me && (
+          {props.user && (
           <>
-            {me.active ? <>
+            {props.user.active ? <>
               <Link href="/posts">
                 <a>Feed</a>
               </Link>
@@ -23,10 +18,10 @@ const Nav = () => (
                 <a>Messages</a>
               </Link>
               <Link href="/yourFriends">
-                <a>Friends {me.received.length > 0 ? <span className="notification-badge">{me.received.length}</span> : ''}
+                <a>Friends {props.user.received.length > 0 ? <span className="notification-badge">{props.user.received.length}</span> : ''}
                 </a>
               </Link>
-              <ProfileNav user={me}/>
+              <ProfileNav user={props.user}/>
             </> : ''}
              <SignOut />
              </>
@@ -38,9 +33,6 @@ const Nav = () => (
             </Link>
           )} */}
         </NavStyles>
-      );
-    }}
-  </User>
 );
 
 export default Nav;

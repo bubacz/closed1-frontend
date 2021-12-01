@@ -5,6 +5,7 @@ import Router from 'next/router';
 import Nav from './Nav';
 import Close from '../Assets/closed_logo.png';
 import AutoComplete from './Search';
+import User from "./User";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -16,25 +17,6 @@ Router.onRouteChangeComplete = () => {
 Router.onRouteChangeError = () => {
   NProgress.done();
 };
-
-const Logo = styled.h1`
-  font-size: 4rem;
-  margin-left: 2rem;
-  position: relative;
-  z-index: 2;
-  transform: skew(-7deg);
-  a {
-    padding: 0.5rem 1rem;
-    background: ${props => props.theme.green};
-    color: white;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  @media (max-width: 1300px) {
-    margin: 0;
-    text-align: center;
-  }
-`;
 
 const StyledHeader = styled.header`
   .bar {
@@ -60,18 +42,23 @@ const StyledHeader = styled.header`
 
 
 const Header = (props) => (
-  <StyledHeader>
-    <div className="bar navbar">
-      <Link href="/posts">
-      <img className="photo" src={Close} />
-      </Link>
-      <Nav />
-    </div>
-    {props.pageName ==="/" || props.pageName === "/posts" ?
-    <div className="sub-bar">
-      <AutoComplete />
-    </div> : ""}
-  </StyledHeader>
+  <User>
+    {({ data }) => {
+      const me = data ? data.me : null;
+      return <StyledHeader>
+        <div className="bar navbar">
+          <Link href="/posts">
+            <img className="photo" src={Close} />
+          </Link>
+          <Nav user={me} />
+        </div>
+        {me && (props.pageName === "/" || props.pageName === "/posts") ?
+          <div className="sub-bar">
+            <AutoComplete />
+          </div> : ""}
+      </StyledHeader>
+    }}
+  </User>
 );
 
 export default Header;
