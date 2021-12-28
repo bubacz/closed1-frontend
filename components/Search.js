@@ -114,6 +114,7 @@ class AutoComplete extends React.Component {
                       key={999}
                       index={999}
                       highlighted={highlightedIndex === 999}
+                      onClick={()=>routeToSearchResults(this.state.searchTerm)}
                     >
                      <FontAwesomeIcon icon={faSearch}/> Search for "{this.state.searchTerm}"
                     </DropDownItem>
