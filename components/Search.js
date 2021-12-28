@@ -5,6 +5,10 @@ import { ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faSearch
+} from "@fortawesome/free-solid-svg-icons";
 
 const SEARCH_POSTS_QUERY = gql`
   query SEARCH_POSTS_QUERY($searchTerm: String!) {
@@ -25,7 +29,6 @@ const SEARCH_POSTS_QUERY = gql`
 `;
 
 function routeToPost(post) {
-  console.log('post', post);
   Router.push({
     pathname: '/post',
     query: {
@@ -34,22 +37,33 @@ function routeToPost(post) {
   });
 }
 
+function routeToSearchResults(searchTerm) {
+  Router.push({
+    pathname: '/searchResults',
+    query: {
+      searchTerm: searchTerm,
+    },
+  });
+}
+
 class AutoComplete extends React.Component {
   state = {
     items: [],
+    searchTerm: '',
     loading: false,
   };
 
   onChange = debounce(async (e, client) => {
     console.log('Searching...');
     // turn loading on
-    this.setState({ loading: true });
+    this.setState({
+      loading: true,
+    });
     // Manually query apollo client
     const res = await client.query({
       query: SEARCH_POSTS_QUERY,
       variables: { searchTerm: e.target.value },
     });
-    console.log('res', res);
     this.setState({
       items: res.data.allPosts,
       loading: false,
@@ -65,18 +79,23 @@ class AutoComplete extends React.Component {
             <div>
               <ApolloConsumer>
                 {client => (
-                  <input
-                    {...getInputProps({
-                      type: 'search',
-                      placeholder: 'Search For A Post',
-                      id: 'search',
-                      className: this.state.loading ? 'loading' : '',
-                      onChange: e => {
-                        e.persist();
-                        this.onChange(e, client);
-                      },
-                    })}
-                  />
+                  <form id="search" onSubmit={(e) => {
+                    e.preventDefault();
+                    routeToSearchResults(this.state.searchTerm);
+                  }}>
+                    <input
+                      {...getInputProps({
+                        type: 'search',
+                        placeholder: 'Search',
+                        id: 'search',
+                        className: this.state.loading ? 'loading' : '',
+                        onChange: e => {
+                          e.persist();
+                          this.onChange(e, client);
+                          this.setState({searchTerm: e.target.value})
+                        },
+                      })}
+                    /></form>
                 )}
               </ApolloConsumer>
               {isOpen && (
@@ -91,8 +110,15 @@ class AutoComplete extends React.Component {
                       "{item.content}" by {item.author.name}
                     </DropDownItem>
                   ))}
-                  {!this.state.items.length &&
-                    !this.state.loading && <DropDownItem> Sorry! Nothing found for "{inputValue}."</DropDownItem>}
+                  <DropDownItem
+                      key={999}
+                      index={999}
+                      highlighted={highlightedIndex === 999}
+                    >
+                     <FontAwesomeIcon icon={faSearch}/> Search for "{this.state.searchTerm}"
+                    </DropDownItem>
+                  {/* {!this.state.items.length &&
+                    !this.state.loading && <DropDownItem> Sorry! Nothing found for "{inputValue}."</DropDownItem>} */}
                 </DropDown>
               )}
             </div>

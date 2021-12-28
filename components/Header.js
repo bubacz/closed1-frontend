@@ -27,8 +27,7 @@ const StyledHeader = styled.header`
     }
   }
   .sub-bar {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
     border-bottom: 1px solid ${props => props.theme.lightgrey};
   }
   .photo {
@@ -40,6 +39,7 @@ const StyledHeader = styled.header`
 }
 `;
 
+const pages = ['/', '/posts', '/rolodex', '/messengerPage', '/myProfile'];
 
 const Header = (props) => (
   <User>
@@ -50,12 +50,14 @@ const Header = (props) => (
           <Link href="/posts">
             <img className="photo" src={Close} />
           </Link>
-          <Nav user={me} />
-        </div>
-        {me && (props.pageName === "/" || props.pageName === "/posts") ?
+          {me && pages.includes(props.pageName) &&
           <div className="sub-bar">
             <AutoComplete />
-          </div> : ""}
+          </div> 
+          }
+          <Nav user={me} />
+        </div>
+        
       </StyledHeader>
     }}
   </User>
