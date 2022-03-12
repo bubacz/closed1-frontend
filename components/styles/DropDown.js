@@ -42,6 +42,7 @@ const SearchStyles = styled.div`
     padding: 10px;
     border: 1px solid ${props => props.theme.lightgreen};
     font-size: 2rem;
+    border-radius: 5px;
     &.loading {
       animation: ${glow} 0.5s ease-in-out infinite alternate;
     }

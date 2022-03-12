@@ -39,8 +39,6 @@ const StyledHeader = styled.header`
 }
 `;
 
-const pages = ['/', '/posts', '/rolodex', '/messengerPage', '/myProfile'];
-
 const Header = (props) => (
   <User>
     {({ data }) => {
@@ -50,7 +48,7 @@ const Header = (props) => (
           <Link href="/posts">
             <img className="photo" src={Close} />
           </Link>
-          {me && pages.includes(props.pageName) &&
+          {me && 
           <div className="sub-bar">
             <AutoComplete />
           </div> 
