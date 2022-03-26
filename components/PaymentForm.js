@@ -202,7 +202,7 @@ const CheckoutForm = ({ productSelected, customer }) => {
                     );
                   }}
                 >
-                  <div style={{ width: "500px", minHeight: "50px", border:'1px solid #26A69A', padding: '1rem' }}>
+                  <div style={{ width: "500px", maxWidth: "100%", minHeight: "50px", border:'1px solid #26A69A', padding: '1rem' }}>
                   Enter your card details
                     <CardElement
                       options={{
