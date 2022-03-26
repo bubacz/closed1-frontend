@@ -5,12 +5,23 @@ import { ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faSearch
+} from "@fortawesome/free-solid-svg-icons";
 
 const SEARCH_POSTS_QUERY = gql`
   query SEARCH_POSTS_QUERY($searchTerm: String!) {
-    posts(where: { OR: [{ content_contains: $searchTerm }, { content_contains: $searchTerm }] }) {
+    allPosts(
+      where: {
+        OR: [{ company_contains: $searchTerm }, { content_contains: $searchTerm }]
+      }
+    ) {
+      id
+      company
       content
       author {
+        id
         name
       }
     }
@@ -26,26 +37,38 @@ function routeToPost(post) {
   });
 }
 
+function routeToSearchResults(searchTerm) {
+  Router.push({
+    pathname: '/searchResults',
+    query: {
+      searchTerm: searchTerm,
+    },
+  });
+}
+
 class AutoComplete extends React.Component {
   state = {
     items: [],
+    searchTerm: '',
     loading: false,
   };
 
   onChange = debounce(async (e, client) => {
     console.log('Searching...');
     // turn loading on
-    this.setState({ loading: true });
+    this.setState({
+      loading: true,
+    });
     // Manually query apollo client
     const res = await client.query({
       query: SEARCH_POSTS_QUERY,
       variables: { searchTerm: e.target.value },
     });
     this.setState({
-      items: res.data.posts,
+      items: res.data.allPosts,
       loading: false,
     });
-  }, 100);
+  }, 500);
 
   render() {
     resetIdCounter();
@@ -56,24 +79,29 @@ class AutoComplete extends React.Component {
             <div>
               <ApolloConsumer>
                 {client => (
-                  <input
-                    {...getInputProps({
-                      type: 'search',
-                      placeholder: 'Search For An Item',
-                      id: 'search',
-                      className: this.state.loading ? 'loading' : '',
-                      onChange: e => {
-                        e.persist();
-                        this.onChange(e, client);
-                      },
-                    })}
-                  />
+                  <form id="search" onSubmit={(e) => {
+                    e.preventDefault();
+                    routeToSearchResults(this.state.searchTerm);
+                  }}>
+                    <input
+                      {...getInputProps({
+                        type: 'search',
+                        placeholder: 'Search',
+                        id: 'search',
+                        className: this.state.loading ? 'loading' : '',
+                        onChange: e => {
+                          e.persist();
+                          this.onChange(e, client);
+                          this.setState({searchTerm: e.target.value})
+                        },
+                      })}
+                    /></form>
                 )}
               </ApolloConsumer>
               {isOpen && (
                 <DropDown>
-                  {this.state.items.map((item, index) => 
-                    (
+                  {this.state.items.map((item, index) =>
+                  (
                     <DropDownItem
                       {...getItemProps({ item })}
                       key={index}
@@ -82,8 +110,16 @@ class AutoComplete extends React.Component {
                       "{item.content}" by {item.author.name}
                     </DropDownItem>
                   ))}
-                  {!this.state.items.length &&
-                    !this.state.loading && <DropDownItem> Sorry! Nothing found for "{inputValue}."</DropDownItem>}
+                  <DropDownItem
+                      key={999}
+                      index={999}
+                      highlighted={highlightedIndex === 999}
+                      onClick={()=>routeToSearchResults(this.state.searchTerm)}
+                    >
+                     <FontAwesomeIcon icon={faSearch}/> Search for "{this.state.searchTerm}"
+                    </DropDownItem>
+                  {/* {!this.state.items.length &&
+                    !this.state.loading && <DropDownItem> Sorry! Nothing found for "{inputValue}."</DropDownItem>} */}
                 </DropDown>
               )}
             </div>

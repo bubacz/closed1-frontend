@@ -103,6 +103,10 @@ injectGlobal`
       cursor: pointer;
     }
   }
+  a:hover{
+    color: ${theme.green};
+    text-decoration: underline;
+  }
 
   .btn-primary {
     background-color: ${theme.green};
@@ -373,7 +377,7 @@ class Page extends Component {
       <ThemeProvider theme={theme}>
         <StyledPage data-aos="fade-up">
           <Meta />
-          <Header />
+          <Header pageName={this.props.children.key}/>
           <AnimatePresence>
             <Inner style={{maxWidth: this.props.children.key === '/messengerPage' ? null : '1200px'}}>
             {this.props.children}

@@ -125,7 +125,6 @@ class Post extends Component {
     const { post, me } = this.props;
     let reportedBy= post.reportedBy ? post.reportedBy.map(a => a.reportedBy):[];
      reportedBy= reportedBy.length ? reportedBy.map(b => b.id):[];
-    // console.log(reportedBy);
     const { canCreateComment, canReplyComment, commentReplyInfo, commentsList, likeStatus, likesCount } = this.state;
     return (
       <div>
