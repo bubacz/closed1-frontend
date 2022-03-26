@@ -20,8 +20,9 @@ const NavStyles = styled.ul`
     cursor: pointer;
     color: white;
     @media (max-width: 700px) {
-      font-size: 10px;
-      padding: 0 10px;
+      &:not(.dropdown-item) {
+        padding: 0 10px;
+      }
     }
     &:before {
       content: '';

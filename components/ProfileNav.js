@@ -9,6 +9,10 @@ const NavItem = styled.div`
     background: #fff;
     z-index: 2;
     margin: 5px;
+    padding: 1rem 0;
+}
+.menu-item {
+  padding: 2rem;
 }
 .profile-nav-img {
     width: 30px;
@@ -34,10 +38,8 @@ a:hover {
     background: #26A69A;
 }
 .separator {
+    margin: 1rem 0;
     border-bottom: 1px solid  #26A69A;
-}
-h3 {
-    margin: 5px;
 }
 `
 class ProfileNav extends Component {
@@ -51,10 +53,9 @@ class ProfileNav extends Component {
               <div> Me &#9660;</div>
           </Dropdown.Toggle>
           <Dropdown.Menu className="menu-box">
-              <h3>Account</h3>
-            <Dropdown.Item eventKey="1"  href="/myProfile">View Profile</Dropdown.Item>
-            <Dropdown.Item eventKey="2" href="/editMyProfile">Edit Profile</Dropdown.Item>
-            <Dropdown.Item eventKey="3" href="/upgradeAccount"> Modify Subscription </Dropdown.Item>
+            <Dropdown.Item eventKey="1" className="menu-item"  href="/myProfile">View Profile</Dropdown.Item>
+            <Dropdown.Item eventKey="2" className="menu-item" href="/editMyProfile">Edit Profile</Dropdown.Item>
+            <Dropdown.Item eventKey="3" className="menu-item" href="/upgradeAccount"> Modify Subscription </Dropdown.Item>
             <div className="separator" />
             <Dropdown.Item eventKey="4">Sign Out</Dropdown.Item>
           </Dropdown.Menu>
