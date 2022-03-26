@@ -13,6 +13,13 @@ export const Messaging = styled.div`
   grid-template-rows: 60px auto 60px;
   grid-column-gap: 1px;
   grid-row-gap: 1px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   .container {
     padding: 10px;
   }
@@ -27,6 +34,10 @@ export const Messaging = styled.div`
     grid-row-start: 1;
     grid-row-end: span 3;
     padding: 0 1rem;
+
+    @media (max-width: 768px) {
+      height: auto;
+    }
   }
   .content {
     height: calc(100vh - 61px - 77px - 2rem); /* Viewport height - navbar height - inner top padding */
