@@ -16,7 +16,6 @@ const Closed1Button = styled.button`
 	margin: 0.5rem;
 	text-transform: uppercase;
 	font-size: medium;
-	float: right;
 	display: inline-block;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;

@@ -8,9 +8,12 @@ import styled from "styled-components";
 import Router from "next/router";
 
 const StyledForm = styled.div`
+  width: 800px;
+  max-width: 100%;
+  margin: auto;
+  padding: 1rem;
   background: white;
-  width: 70%;
-  position: absolute;
+
   input {
     padding: 1rem;
   }
@@ -27,6 +30,19 @@ const StyledForm = styled.div`
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 5rem;
     grid-row-gap: 1rem;
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .submit-button {
+    display: block;
+    margin-left: auto;
+
+    @media (max-width: 576px) {
+      width: 100%;
+    }
   }
 `;
 const UPDATE_USER_MUTATION = gql`
@@ -266,7 +282,7 @@ class ProfileForm extends Component {
               </div>
               <br />
               <br />
-              <Closed1Button type="submit">
+              <Closed1Button className="submit-button" type="submit">
                 Confirm{loading ? "ing" : ""} Changes
               </Closed1Button>
             </Form>
