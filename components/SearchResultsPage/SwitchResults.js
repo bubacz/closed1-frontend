@@ -10,7 +10,6 @@ import {
 
 const VerticalTabs = styled.div`
     background: white;
-    height: 100vh;
     padding: 2rem;
     text-align: center;
 `;

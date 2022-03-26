@@ -10,7 +10,6 @@ const HomeScreen = styled.div`
 
 const ResultSection = styled.div`
     background: white;
-    margin: 1rem;
     height: 100%;
     width: auto;
     h2, h3{
@@ -80,7 +79,7 @@ class SearchPageLayout extends Component {
     render() {
         const { results, searchTerm } = this.props;
         const content =this.fetchComponent()
-        return <HomeScreen className="grid-template">
+        return <HomeScreen className="grid-template" style={{gap: "2rem"}}>
             <div data-aos="fade-up-right" data-aos-duration="500" className="scrollable sidebar flex-single-column">
                 <SwitchResults current={this.state.id} switchTo={(key) => this.setState({ id: key })} />
             </div>
