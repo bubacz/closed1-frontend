@@ -10,163 +10,176 @@ import CancelRequest from "./Connections/CancelRequest";
 import RemoveFriend from "./Connections/RemoveFriend";
 
 export const ConversationList = styled.div`
-  display: flex;
-  max-width: 800px;
-  height: 100px;
-  align-items: center;
-  padding: 10px;
-  border: 2px solid ${(props) => props.theme.lightgrey};
-  border-radius: 10px;
-  background: white;
+	display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+	align-items: center;
+	width: 800px;
+	max-width: 100%;
+	padding: 10px;
+	border: 2px solid ${props => props.theme.lightgrey};
+	border-radius: 10px;
+	background: white;
 
-  .conversation-list-item:hover {
-    background: solid blue;
-    cursor: pointer;
+  @media (max-width: 375px) {
   }
 
-  .conversation-photo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-  }
+  .friend-info {
+    display: flex;
+    align-items: center;
 
-  .conversation-title {
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: capitalize;
-    margin: 0;
-    :hover {
-      cursor: pointer;
-      color: ${(props) => props.theme.green};
+    @media (max-width: 576px) {
+      flex-direction: column;
     }
   }
 
-  .conversation-snippet {
-    font-size: 12px;
-    color: #888;
-    margin: 0;
-    text-overflow: initial;
-    white-space: nowrap;
-  }
+	.conversation-list-item:hover {
+		background: solid blue;
+		cursor: pointer;
+	}
 
-  .connected-info {
-    font-size: 10px;
-  }
+	.conversation-photo {
+		width: 70px;
+		height: 70px;
+		border-radius: 50%;
+		object-fit: cover;
+		margin-right: 10px;
+	}
 
-  .action-items {
-    color: ${(props) => props.theme.green};
-    position: absolute;
-    right: 0;
-    padding-right: 10%;
+	.conversation-title {
+		font-size: 14px;
+		font-weight: bold;
+		text-transform: capitalize;
+		margin: 0;
+		:hover {
+			cursor: pointer;
+			color: ${props => props.theme.green};
+		}
+	}
 
-    .messaging {
-      background: none;
-      border: 1px solid ${(props) => props.theme.green};
-      font-size: 14px;
-      height: 30px;
-      width: 100px;
-      vertical-align: top;
-      margin-right: 10px;
-      :hover {
-        background: ${(props) => props.theme.lightgreen};
-        cursor: pointer;
-      }
+	.conversation-snippet {
+		font-size: 12px;
+		color: #888;
+		margin: 0;
+		text-overflow: initial;
+		white-space: nowrap;
+	}
+
+	.connected-info {
+		font-size: 10px;
+	}
+
+	.action-items {
+		display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+		align-items: center;
+		margin-left: auto;
+		color: ${props => props.theme.green};
+
+    @media (max-width: 375px) {
+      margin: auto;
     }
-    .sequence-button {
-      display: inline-flex;
-      button{
-        font-size: 14px;
-      }
-      width: 25%;
+
+    > * {
+      flex-grow: 1;
+      margin: 0;
     }
-  }
+
+		.sequence-button {
+			display: inline-flex;
+			button {
+				font-size: 14px;
+			}
+			width: 25%;
+		}
+	}
 `;
 
 export function routeToMessaging(id) {
-  Router.push({
-    pathname: "/messengerPage",
-    query: {
-      id: id,
-    },
-  });
+	Router.push({
+		pathname: "/messengerPage",
+		query: {
+			id: id
+		}
+	});
 }
 
 class SingleFriend extends React.Component {
-  handleClick = (id) => {
-    Router.push({
-      pathname: "/userProfile",
-      query: { id: id },
-    });
-  };
+	handleClick = id => {
+		Router.push({
+			pathname: "/userProfile",
+			query: { id: id }
+		});
+	};
 
-  getButtons = () => {
-    const { id, data, me, isRequested } = this.props;
-    const [conversation] = me.conversations  ? me.conversations.filter((conversation) => {
-      let participants = conversation.participants.map((a) => a.id);
-      if (participants.includes(data.id)) {
-        return conversation.id;
-      }
-      return null;
-    }) : '';
-    switch (id) {
-      case "FindNew":
-        return (
-          <div>
-            {isRequested ? (
-              <div className="sequence-button">
-                <Closed1Button>Pending...</Closed1Button>
-                <CancelRequest userId={data.id} />
-              </div>
-            ) : (
-              <SendConnection user={data} me={this.props.me} />
-            )}
-          </div>
-        );
-      case "FriendsList":
-        return (
-          <div>
-          <button className="messaging" onClick={() => routeToMessaging(conversation?.id)}>
-            Message
-          </button>
-            <RemoveFriend userId={data.id} conversationId={conversation?.id} />
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+	getButtons = () => {
+		const { id, data, me, isRequested } = this.props;
+		const [conversation] = me.conversations
+			? me.conversations.filter(conversation => {
+					let participants = conversation.participants.map(a => a.id);
+					if (participants.includes(data.id)) {
+						return conversation.id;
+					}
+					return null;
+			  })
+			: "";
+		switch (id) {
+			case "FindNew":
+				return (
+					<>
+						{isRequested ? (
+							<div className="sequence-button">
+								<Closed1Button>Pending...</Closed1Button>
+								<CancelRequest userId={data.id} />
+							</div>
+						) : (
+							<SendConnection user={data} me={this.props.me} />
+						)}
+					</>
+				);
+			case "FriendsList":
+				return (
+					<>
+						<Closed1Button className="btn-secondary" onClick={() => routeToMessaging(conversation?.id)}>
+							Message
+						</Closed1Button>
+						<RemoveFriend userId={data.id} conversationId={conversation?.id} />
+					</>
+				);
+			default:
+				return null;
+		}
+	};
 
-  render() {
-    const user = this.props.data;
-    return (
-      <ConversationList>
-        <img
-          className="conversation-photo"
-          src={user.profilePic ? user.profilePic : User}
-        />
-        <div className="conversation-info">
-          <h1
-            className="conversation-title"
-            onClick={() => {
-              this.handleClick(user.id);
-            }}
-          >
-            {user.name}
-          </h1>
-          {user.title && user.company ? (
-            <p className="conversation-snippet">
-              {user.title} @ {user.company}
-            </p>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="action-items ">{this.getButtons()}</div>
-      </ConversationList>
-    );
-  }
+	render() {
+		const user = this.props.data;
+		return (
+			<ConversationList>
+				<div className="friend-info">
+					<img className="conversation-photo" src={user.profilePic ? user.profilePic : User} />
+					<div className="conversation-info">
+						<h1
+							className="conversation-title"
+							onClick={() => {
+								this.handleClick(user.id);
+							}}
+						>
+							{user.name}
+						</h1>
+						{user.title && user.company ? (
+							<p className="conversation-snippet">
+								{user.title} @ {user.company}
+							</p>
+						) : (
+							""
+						)}
+					</div>
+				</div>
+				<div className="action-items">{this.getButtons()}</div>
+			</ConversationList>
+		);
+	}
 }
 
 export default SingleFriend;

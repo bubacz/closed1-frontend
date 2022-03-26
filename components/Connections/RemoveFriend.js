@@ -45,7 +45,7 @@ class RemoveFriend extends Component {
                     await removeFriend();
                     window.location.reload();
                   }}
-                > REMOVE FRIEND </Closed1Button>
+                >REMOVE</Closed1Button>
           </Content>
         )}
       </Mutation>
