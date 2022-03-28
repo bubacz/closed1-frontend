@@ -22,14 +22,22 @@ const StyledHeader = styled.header`
   .bar {
     background: ${props => props.theme.green};
     line-height: 1;
+    gap: 1rem;
     @media (max-width: 1300px) {
       justify-content: center;
     }
   }
+  
   .sub-bar {
     display: flex;
     border-bottom: 1px solid ${props => props.theme.lightgrey};
+    margin-right: auto;
+    
+    @media (max-width: 1300px) {
+      margin-right: initial;
+    }
   }
+
   .photo {
     padding: 5px 10px;
     height: 50px;

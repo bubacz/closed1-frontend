@@ -197,16 +197,17 @@ class Post extends Component {
                 )}
               </div>
           </div>
+        
+          <Comments
+            commentList={commentsList}
+            replyComment={this.handleComments}
+            me={me}
+          />
+          <div className="commentInput">{canCreateComment ? <CreateComment postId={post.id} onCommentPost={this.onNewComment}/> : ""} 
+            {canReplyComment ? <ReplyComment commentId={commentReplyInfo.commentId} author={commentReplyInfo.author} onCommentPost={this.onNewReplyComment}/> : "" }
+          </div>
         </PostStyles>
 
-        <Comments
-          commentList={commentsList}
-          replyComment={this.handleComments}
-          me={me}
-        />
-        <div className="commentInput">{canCreateComment ? <CreateComment postId={post.id} onCommentPost={this.onNewComment}/> : ""} 
-          {canReplyComment ? <ReplyComment commentId={commentReplyInfo.commentId} author={commentReplyInfo.author} onCommentPost={this.onNewReplyComment}/> : "" }
-        </div>
       </div>
     );
   }

@@ -4,6 +4,15 @@ import styled from "styled-components";
 export const Search = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  
+  @media (max-width: 576px) {
+    flex-grow: 1;
+  }
+
+  > * {
+    margin: 0;
+  }
 `;
 
 class ConversationSearch extends React.Component {

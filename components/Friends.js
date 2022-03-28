@@ -16,9 +16,9 @@ const StylingFriends = styled.div`
     align-items: baseline;
     background: ${(props) => props.theme.green};
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     width: 800px;
-    border-radius: 10px;
+    max-width: 100%;
   }
 
   .sort-field {

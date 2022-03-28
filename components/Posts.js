@@ -9,7 +9,7 @@ const Center = styled.div`
 const PostsList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 1rem;
 `;
 
 class Posts extends Component {

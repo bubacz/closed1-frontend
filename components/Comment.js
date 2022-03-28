@@ -59,7 +59,7 @@ class Comment extends Component {
 	render() {
 		const { author, content, replies, createdAt } = this.props.comment;
     return (
-      <div className="card">
+      <div className="card border-0">
         <CommentStyle>
           <div className="card-header">
             <div className="main-comment">
