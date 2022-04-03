@@ -39,14 +39,19 @@ const SwitchResults = (props) => {
         <hr />
         <h3>Filters</h3>
         <Switch
+            className={current === "0" ? 'active' : ''}
+            onClick={() => switchTo("0")}>
+            <FontAwesomeIcon icon={faMailBulk} /> All
+        </Switch>
+        <Switch
             className={current === "1" ? 'active' : ''}
             onClick={() => switchTo("1")}>
-            <FontAwesomeIcon icon={faUsers} /> People
+            <FontAwesomeIcon icon={faMailBulk} /> Feed
         </Switch>
         <Switch
             className={current === "2" ? 'active' : ''}
             onClick={() => switchTo("2")}>
-            <FontAwesomeIcon icon={faMailBulk} /> Feed
+            <FontAwesomeIcon icon={faUsers} /> People
         </Switch>
         <Switch
             className={current === "3" ? 'active' : ''}
