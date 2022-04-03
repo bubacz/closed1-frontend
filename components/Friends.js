@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import { Query } from "react-apollo";
 import styled from "styled-components";
 import SingleFriend from "./SingleFriend";
-// import { conversations } from "./messengerSetup/Messenger";
 import ConversationSearch from "./ConversationSearch";
-import Form from "./styles/Form";
-import { AnimatePresence, motion } from "framer-motion";
-// import TemplateImage from "../Assets/backHero.jpg"
+import { motion } from "framer-motion";
 
 const StylingFriends = styled.div`
   text-align: -webkit-center;
@@ -55,9 +51,6 @@ class Friends extends Component {
     this.setState({ contacts: filteredContacts });
   };
 
-  handlesort = (e) => {
-    e.preventDefault();
-  };
   render() {
     const { contacts } = this.state;
     return (
@@ -71,22 +64,6 @@ class Friends extends Component {
           }}
         >
           <div className="utilities-section">
-            {/* <form>
-              <label>
-                Sort By
-                <select
-                  onChange={this.handlesort}
-                  className="form-control sort-field"
-                >
-                  <option />
-                  <option value="1">A-Z</option>
-                  <option value="2">Z-A</option>
-                  <option value="3">Recently Connected</option>
-                  <option value="4">Earliest Connected</option>
-                </select>
-              </label>
-            </form> */}
-            {/* <input as="select" placeholder="sortBy" /> */}
             <ConversationSearch triggerSearch={this.trials} usage="friends" />
           </div>
           {contacts.map((contact) => (

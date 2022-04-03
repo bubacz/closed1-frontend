@@ -3,7 +3,6 @@ import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
 import Closed1Button from "../styles/Closed1Button";
-import Error from "../ErrorMessage";
 
 const DECLINE_CONNECTION_REQUEST = gql`
   mutation DECLINE_CONNECTION_REQUEST($id: ID!) {

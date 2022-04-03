@@ -18,6 +18,7 @@ const SEARCH_USERS_QUERY = gql`
       id
       name
       profilePic
+      title
       company
       email
     }

@@ -4,7 +4,6 @@ import gql from "graphql-tag";
 import styled from "styled-components";
 import Closed1Button from "../styles/Closed1Button";
 import LoadingSpinner from "../LoadingSpinner";
-// import Error from "../ErrorMessage";
 
 const ACCEPT_CONNECTION_REQUEST = gql`
   mutation ACCEPT_CONNECTION_REQUEST($id: ID!) {

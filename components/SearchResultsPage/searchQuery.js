@@ -8,6 +8,8 @@ const MAIN_SEARCH_ENGINE_QUERY = gql`
           friends{
               id
               name
+              title 
+              company
           }
       }
     users(
@@ -18,6 +20,7 @@ const MAIN_SEARCH_ENGINE_QUERY = gql`
         id
         name
         profilePic
+        title 
         company
         email
       }
@@ -92,12 +95,14 @@ const MAIN_SEARCH_ENGINE_QUERY = gql`
       searchFriends(searchTerm: $searchTerm){
           id
           name
-          title
+          title 
+          company
           profilePic
           friends{
               id
               name
-              title
+              title 
+              company
               profilePic
           }
         }

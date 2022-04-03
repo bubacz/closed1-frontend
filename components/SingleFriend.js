@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import User from "../Assets/user.png";
 import Router from "next/router";
 import SendConnection from "./Connections/SendConnection";
@@ -11,8 +9,8 @@ import RemoveFriend from "./Connections/RemoveFriend";
 
 export const ConversationList = styled.div`
 	display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: center;
 	width: 800px;
 	max-width: 100%;
@@ -71,8 +69,8 @@ export const ConversationList = styled.div`
 
 	.action-items {
 		display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+		flex-wrap: wrap;
+		justify-content: flex-end;
 		align-items: center;
 		margin-left: auto;
 		color: ${props => props.theme.green};
@@ -117,12 +115,12 @@ class SingleFriend extends React.Component {
 		const { id, data, me, isRequested } = this.props;
 		const [conversation] = me.conversations
 			? me.conversations.filter(conversation => {
-					let participants = conversation.participants.map(a => a.id);
-					if (participants.includes(data.id)) {
-						return conversation.id;
-					}
-					return null;
-			  })
+				let participants = conversation.participants.map(a => a.id);
+				if (participants.includes(data.id)) {
+					return conversation.id;
+				}
+				return null;
+			})
 			: "";
 		switch (id) {
 			case "FindNew":
@@ -167,12 +165,10 @@ class SingleFriend extends React.Component {
 						>
 							{user.name}
 						</h1>
-						{user.title && user.company ? (
+						{(user.title && user.company) && (
 							<p className="conversation-snippet">
 								{user.title} @ {user.company}
 							</p>
-						) : (
-							""
 						)}
 					</div>
 				</div>

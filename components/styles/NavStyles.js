@@ -7,10 +7,16 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 1.5rem;
+  a{
+    svg{
+      width: 25px !important;
+      height: 25px;
+    }
+  }
   a,
   button {
     padding: 1rem 3rem;
-    display: flex;
+    display: grid;
     align-items: center;
     position: relative;
     text-transform: uppercase;
@@ -19,6 +25,7 @@ const NavStyles = styled.ul`
     border: 0;
     cursor: pointer;
     color: white;
+    justify-items: center !important;
     @media (max-width: 700px) {
       &:not(.dropdown-item) {
         padding: 0 10px;
@@ -49,9 +56,9 @@ const NavStyles = styled.ul`
     &:focus {
       outline: none;
       color:  ${props => props.theme.lightgrey};
-      &:after {
-        width: calc(100% - 60px);
-      }
+      // &:after {
+      //   width: calc(100% - 100px);
+      // }
     }
   }
   @media (max-width: 1300px) {

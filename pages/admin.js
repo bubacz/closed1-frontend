@@ -1,26 +1,12 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Query } from "react-apollo";
 import Link from "next/link";
 import styled from "styled-components";
 import LoadingSpinner from "../components/LoadingSpinner";
 import AnimatedNumber from "animated-number-react";
 import PleaseSignIn from "../components/PleaseSignIn";
-import {
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  BarChart,
-  Bar,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  LineChart,
-  Line,
-} from "recharts";
-import { getReports, getUtcDates } from "../lib/StatisticUtils";
+import { PieChart, Pie, XAxis, YAxis, Tooltip, Legend, LineChart, Line } from "recharts";
+import { getUtcDates } from "../lib/StatisticUtils";
 import { GET_POSTS_DATA } from "../Queries/DashBoardQueries";
 
 const Graphs = styled.div`

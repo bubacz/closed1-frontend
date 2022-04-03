@@ -32,10 +32,7 @@ class SearchPageLayout extends Component {
         const usersList = users.filter((user) => {
             const isFriend = friends.includes(user.id);
             const isMine = me.id === user.id;
-            if (!isFriend && !isMine) {
-                return user;
-            }
-            return null;
+                return !isFriend && !isMine;
         });
         switch (id) {
             case "0":

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import SingleRequest from "./SingleRequest";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const StylingFriends = styled.div`
   margin-top: 2rem;

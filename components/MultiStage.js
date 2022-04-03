@@ -9,7 +9,7 @@ import { Query } from "react-apollo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoadingSpinner from "./LoadingSpinner";
 import { faUserFriends, faBell, faSearchPlus, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 const Stages = styled.div`
 	width: 800px;
@@ -87,6 +87,7 @@ const GET_USER_DATA_QUERY = gql`
 				id
 				name
 				title
+				company
 				profilePic
 			}
 			sent {
