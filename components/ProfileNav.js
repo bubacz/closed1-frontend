@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Link from "next/link";
 import { DropdownButton, Dropdown } from "react-bootstrap";
+import SignOut from "./Signout";
 import styled from "styled-components";
 
 const NavItem = styled.div`
@@ -24,11 +25,21 @@ const NavItem = styled.div`
     margin : 0;
     flex-direction: column;
 } 
+.dropdown-menu {
+  a, button {
+    color: #26A69A;
+    width: 100%;
+  }
+
+  button {
+    padding: 1rem;
+  }
+}
+.dropdown-item {
+  color: #26A69A;
+}
 button:after {
     display: none;
-}
-a{
-    color:#26A69A
 }
 a:after {
   background: #fff
@@ -57,7 +68,7 @@ class ProfileNav extends Component {
             <Dropdown.Item eventKey="2" className="menu-item" href="/editMyProfile">Edit Profile</Dropdown.Item>
             <Dropdown.Item eventKey="3" className="menu-item" href="/upgradeAccount"> Modify Subscription </Dropdown.Item>
             <div className="separator" />
-            <Dropdown.Item eventKey="4">Sign Out</Dropdown.Item>
+            <SignOut eventKey="4" />
           </Dropdown.Menu>
         </Dropdown>
 

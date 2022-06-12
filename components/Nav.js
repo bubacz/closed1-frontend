@@ -1,6 +1,5 @@
 import Link from "next/link";
 import NavStyles from "./styles/NavStyles";
-import SignOut from "./Signout";
 import ProfileNav from "./ProfileNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentDots, faAddressBook, faRss, faUserFriends } from "@fortawesome/free-solid-svg-icons";
