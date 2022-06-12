@@ -7,6 +7,7 @@ import Link from "next/link";
 import Closed1Button from "./styles/Closed1Button";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Router from "next/router";
+import Error from "./ErrorMessage";
 
 const MainForm = styled.div`
   // display: block;
@@ -24,6 +25,9 @@ const PleaseSignIn = (props) => (
   <Query query={CURRENT_USER_QUERY} fetchPolicy="cache-and-network">
     {({ data, loading }) => {
       if (loading) return <LoadingSpinner />;
+      if (!data) {
+        return <Error error={{message: "Failed to fetch data."}} />
+      }
       if (!data.me) {
         return (
           <MainForm>
