@@ -19,10 +19,14 @@ Router.onRouteChangeError = () => {
 };
 
 const StyledHeader = styled.header`
+  background: ${props => props.theme.green};
+
   .bar {
-    background: ${props => props.theme.green};
+    max-width: ${props => props.theme.siteWidth};
+    margin: 0 auto;
     line-height: 1;
     gap: 1rem;
+
     @media (max-width: 1300px) {
       justify-content: center;
     }

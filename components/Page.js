@@ -15,6 +15,7 @@ const theme = {
   lightgreen: "#69ddd1",
   orange: "#e3b504",
   bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
+  siteWidth: "1200px"
 };
 
 const StyledPage = styled.div`
@@ -379,7 +380,7 @@ class Page extends Component {
           <Meta />
           <Header pageName={this.props.children.key}/>
           <AnimatePresence>
-            <Inner style={{maxWidth: this.props.children.key === '/messengerPage' ? null : '1200px'}}>
+            <Inner style={{maxWidth: this.props.children.key === '/messengerPage' ? null : theme.siteWidth}}>
             {this.props.children}
             </Inner>
             </AnimatePresence>

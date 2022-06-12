@@ -11,7 +11,7 @@ import { CURRENT_USER_QUERY } from '../Queries/Me';
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const SingleContactStyles = styled.div`
-  max-width: 1200px;
+  max-width: ${props => props.theme.siteWidth};
   margin: 2rem auto;
   box-shadow: ${props => props.theme.bs};
   display: grid;

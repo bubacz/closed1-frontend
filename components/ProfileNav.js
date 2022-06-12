@@ -15,8 +15,8 @@ const NavItem = styled.div`
   padding: 2rem;
 }
 .profile-nav-img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
 }
 .dropdown-toggle {

@@ -26,7 +26,6 @@ const Nav = (props) => (
           </Link>
           <ProfileNav user={props.user} />
         </>}
-        <SignOut />
       </>
     )}
   </NavStyles>
