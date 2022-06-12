@@ -380,7 +380,7 @@ class Page extends Component {
           <Meta />
           <Header pageName={this.props.children.key}/>
           <AnimatePresence>
-            <Inner style={{maxWidth: this.props.children.key === '/messengerPage' ? null : theme.siteWidth}}>
+            <Inner style={{maxWidth: theme.siteWidth}}>
             {this.props.children}
             </Inner>
             </AnimatePresence>

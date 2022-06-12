@@ -337,7 +337,6 @@ class Messenger extends React.Component {
           {this.getConversationList()}
           {this.getTextMessageList()}
         </div>
-        <div className="scrollable vertical-line" />
         <div className="scrollable content">
           <Query query={MY_CONVERSATIONS_QUERY} fetchPolicy="cache-and-network">
             {({ loading, error, data }) => {

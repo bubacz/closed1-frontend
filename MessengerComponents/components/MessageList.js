@@ -6,15 +6,13 @@ import Message from "./Message";
 import moment from "moment";
 
 const MessageContainer = styled.div`
+  padding-bottom: 75px;
+  
   .conversation-title {
     font-size: 18px;
     font-weight: bold;
     text-transform: capitalize;
     margin: 0;
-  }
-  .box {
-    padding: 10px;
-    padding-bottom: 50px;
   }
 `;
 
@@ -122,7 +120,7 @@ class MessageList extends React.Component {
     if (messages.length > 0) {
       return (
         <MessageContainer>
-          <div className="box">{this.state.tempMessages}</div>
+          {this.state.tempMessages}
         </MessageContainer>
       );
     }

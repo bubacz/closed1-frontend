@@ -11,17 +11,17 @@ import Loader from "react-loader-spinner";
 import User from "../../Assets/user.png";
 
 const Item = styled.div`
-  height: 40px;
-  width: 60px;
-  z-index: 2;
-  position: fixed;
-  bottom: 23px;
-  right: 5px;
-  opacity: 75%;
-  text-align: center;
-  path{
-  stroke-width: 4;
-  }
+	height: 40px;
+	width: 60px;
+	z-index: 2;
+	position: fixed;
+	bottom: 23px;
+	right: 5px;
+	opacity: 75%;
+	text-align: center;
+	path{
+		stroke-width: 4;
+	}
 `;
 
 export default class Conversation extends React.Component {
@@ -97,7 +97,8 @@ export default class Conversation extends React.Component {
             this.messagesEnd = el;
           }}
         />
-        <div className="compose">
+        <div className="compose-wrapper">
+          <div className="compose">
           <input
             disabled={loading}
             type="text"
@@ -147,6 +148,7 @@ export default class Conversation extends React.Component {
           ) : (
             ""
           )}
+          </div>
         </div>
       </ConversationFooter>
     );

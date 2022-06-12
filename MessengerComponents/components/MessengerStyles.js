@@ -34,9 +34,11 @@ export const Messaging = styled.div`
     grid-row-start: 1;
     grid-row-end: span 3;
     padding: 0 1rem;
-
+    border-right: 1px solid #ccc;
+    
     @media (max-width: 768px) {
       height: auto;
+      border-right: 0;
     }
   }
   .content {
@@ -44,12 +46,6 @@ export const Messaging = styled.div`
     // background: white;
     grid-row-start: 1;
     grid-row-end: span 3;
-  }
-  .vertical-line {
-    position: absolute;
-    top: 8rem;
-    left: 370px;
-    border-left: 1px solid #ccc;
   }
   .footer {
     grid-column-start: 2;
@@ -101,15 +97,20 @@ export const ConversationBody = styled.div`
 `;
 
 export const ConversationFooter = styled.div`
-  .compose {
-    display: flex;
+  .compose-wrapper {
     position: fixed;
     bottom: 0px;
     left: 0px;
+    width: 100%;
+  }
+  
+  .compose {
+    display: flex;
     justify-content: flex-end;
     align-items: stretch;
-    width: calc(100% - 20px);
-    padding: 1.5rem 1rem;
+    max-width: ${props => props.theme.siteWidth};
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
     border-top: 1px solid #eeeef1;
     gap: 1.5rem;
     // background: white;
@@ -146,7 +147,6 @@ export const ConversationFooter = styled.div`
 
   .compose-input {
     border: 1px solid ${(props) => props.theme.green};
-    width: 75%;
 
     &::placeholder {
       opacity: 0.3;
